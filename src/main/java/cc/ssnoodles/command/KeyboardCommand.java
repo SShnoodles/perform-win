@@ -44,6 +44,28 @@ public class KeyboardCommand {
         keyboard(KeyEvent.VK_ESCAPE);
     }
     /**
+     * 键盘-空格
+     */
+    public static void keyboardSpace() {
+        keyboard(KeyEvent.VK_SPACE);
+    }
+
+    /**
+     * 键盘-alt+f4
+     */
+    public static void keyboardAltAndF4() {
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+        robot.keyPress(KeyEvent.VK_ALT);
+        robot.keyPress(KeyEvent.VK_F4);
+        robot.keyRelease(KeyEvent.VK_ALT);
+        robot.keyRelease(KeyEvent.VK_F4);
+    }
+    /**
      * 键盘
      */
     public static void keyboard(int keyEvent) {

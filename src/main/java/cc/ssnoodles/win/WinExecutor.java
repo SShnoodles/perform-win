@@ -66,6 +66,15 @@ public class WinExecutor {
             case "keyboard_esc":
                 KeyboardCommand.keyboardEsc();
                 break;
+            case "keyboard_space":
+                KeyboardCommand.keyboardSpace();
+                break;
+            case "keyboard_alt_f4":
+                KeyboardCommand.keyboardAltAndF4();
+                break;
+            case "open_ppt":
+                DosCommand.startPPT();
+                break;
             default:
                 break;
         }

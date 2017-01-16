@@ -5,6 +5,7 @@ import org.apache.commons.exec.DefaultExecuteResultHandler;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteWatchdog;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -86,6 +87,30 @@ public class DosCommand {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * 开启ppt
+     */
+    public static void startPPT() {
+        //当前路径
+        String userDir = System.getProperty("user.dir");
+        File f = new File(userDir);
+        if (!f.exists()) {
+            System.out.println(userDir + " not exists");
+            return;
+        }
+        File files[] = f.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            File file = files[i];
+            if (!file.isDirectory()) {
+                String name = file.getName();
+                if (name.contains(".pptx") || name.contains(".ppt") || name.contains(".pps")) {
+                    start(userDir + "/" + name);
+                    return;
+                }
+            }
         }
     }
 }
