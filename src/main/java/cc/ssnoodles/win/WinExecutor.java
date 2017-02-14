@@ -5,6 +5,8 @@ import cc.ssnoodles.command.DosCommand;
 import cc.ssnoodles.command.KeyboardCommand;
 import cc.ssnoodles.util.ProUtil;
 
+import java.util.Properties;
+
 /**
  * Filename: WinExecutor
  * Description: 命令执行者
@@ -25,13 +27,15 @@ public class WinExecutor {
     private static final String WIN_APP_EXE_NAME ="win_app_exe_name";
     private static final String WIN_OPEN_IE_WWW ="win_open_ie_www";
 
+    private static Properties pro = ProUtil.getProperties();
+
     public static void exec() {
-        switch (ProUtil.getValue(COMMAND_TYPE)) {
+        switch (pro.getProperty(COMMAND_TYPE)) {
             case "open_ie_max":
                 DosCommand.openIeMax();
                 break;
             case "open_ie_max_www":
-                DosCommand.openIeMax(ProUtil.getValue(WIN_OPEN_IE_WWW));
+                DosCommand.openIeMax(pro.getProperty(WIN_OPEN_IE_WWW));
                 break;
             case "open_ie_min":
                 DosCommand.openIeMin();
@@ -46,13 +50,13 @@ public class WinExecutor {
                 WinCommand.winIeClose();
                 break;
             case "open_app":
-                DosCommand.start(ProUtil.getValue(WIN_APP_URL));
+                DosCommand.start(pro.getProperty(WIN_APP_URL));
                 break;
             case "close_app":
-                DosCommand.kill(ProUtil.getValue(WIN_APP_EXE_NAME));
+                DosCommand.kill(pro.getProperty(WIN_APP_EXE_NAME));
                 break;
             case "close_app_one":
-                WinCommand.kill(ProUtil.getValue(WIN_APP_TITLE));
+                WinCommand.kill(pro.getProperty(WIN_APP_TITLE));
                 break;
             case "keyboard_f5":
                 KeyboardCommand.keyboardF5();

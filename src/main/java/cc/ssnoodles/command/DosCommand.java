@@ -91,7 +91,7 @@ public class DosCommand {
     }
 
     /**
-     * 开启ppt
+     * 开启当前目录下的ppt
      */
     public static void startPPT() {
         //当前路径
